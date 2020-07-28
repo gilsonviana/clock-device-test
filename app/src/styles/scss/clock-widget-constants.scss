@@ -1,0 +1,37 @@
+$edge-radius: 2px;
+/* device */
+$color-device: #313131;
+$color-device-stroke: #19191c;
+$color-device-drop: rgba(0, 0, 0, .26);
+$color-device-glow-grad-1: #fff;
+$color-device-glow-grad-2: #4f4f4f;
+$color-device-glow-grad-3: #646467;
+/* screen */
+$color-screen: #3c3c40;
+$color-screen-drop: rgba(76,76,78,0.51);
+$color-screen-inner: rgba(0, 0, 0, .65);
+$color-screen-stroke-grad-1: #212122;
+$color-screen-stroke-grad-2: rgba(255, 255, 255, .1);
+$color-screen-font: #1a1a1c;
+/* buttons */
+$color-button-inner: rgba(0, 0, 0, .3);
+$color-button-drop: rgba(78, 78, 79, .75);
+$color-dark-drop-shadow: #202021;
+$color-dark-grad-1: #2c2c2d;
+$color-dark-grad-2: #3d3d3d;
+/* power */
+$color-white: #d6d6d6;
+$color-led-grad-1: rgb(146,207,220);
+$color-led-grad-2:  rgb(255, 255, 255);
+$color-led-bkg: #1c1c1d;
+$color-led-inner: rgba(0, 0, 0, .57);
+/* toggle */
+$color-toggle: #1c1c1e;
+$color-toggle-text: #b4b4b5;
+$color-toggle-drop: #4e4e4f;
+$color-toggle-inner: rgba(0, 0, 0, .47);
+/* range */
+$color-range: #2a2a2b;
+$color-range-drop: #4e4e4f;
+$color-range-inner: rgba(0, 0, 0, .3);
+

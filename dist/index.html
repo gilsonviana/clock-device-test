@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mapleton Hill - Clock Test</title>
+    <meta name="description" content="Mapleton Hill, frontend development test.">
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+    <div class="clock">
+        <div class="row">
+            <div class="clock__screen">
+                <div class="clock__screen__left">
+                    <image src="images/Clock_simple.svg" alt="Clock led" />
+                </div>
+                <div class="clock__screen__display">
+                    <div class="clock__screen__display__back">
+                        <span>8</span>
+                        <span>8</span>
+                        <span>8</span>
+                        <span>8</span>
+                    </div>
+                    <div class="clock__screen__display__front">
+                    </div>
+                </div>
+                <div class="clock__screen__unit">
+                    <div class="clock__screen__unit__min --active">
+                        <span>M</span>
+                        <span>I</span>
+                        <span>N</span>
+                    </div>
+                    <div class="clock__screen__unit__hrs">
+                        <span>H</span>
+                        <span>R</span>
+                        <span>S</span>
+                    </div>
+                </div>
+            </div>
+            <div class="clock__buttons">
+                <div class="clock__buttons__row">
+                    <div class="clock__buttons__row__btn" id="up-btn">
+                        <image src="images/up.svg" alt="up button"/>
+                    </div>
+                    <div class="clock__buttons__row__btn" id="down-btn">
+                        <image src="images/down.svg" alt="down button"/>
+                    </div>
+                </div>
+                <div class="clock__buttons__row">
+                    <div class="clock__buttons__power-btn" id="pwr-btn">
+                        <span class="clock__buttons__power-btn__led"></span>
+                        <span>PWR</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="clock__interface">
+                <div class="clock__interface__col">
+                    <span class="clock__interface__text">MIN</span>
+                    <input class="clock__interface__switch" type="checkbox" id="switch" /><label for="switch">Toggle</label>
+                    <span class="clock__interface__text">HRS</span>
+                </div>
+            </div>
+            <div class="clock__slider">
+                <input class="clock__slider__range" type="range" value="0" min="0" max="59">
+                <div class="clock__slider__scale">
+                    <span class="clock__slider__scale__mark"></span>
+                    <span class="clock__slider__scale__mark-short"></span>
+                    <span class="clock__slider__scale__mark-short"></span>
+                    <span class="clock__slider__scale__mark-short"></span>
+                    <span class="clock__slider__scale__mark-short"></span>
+                    <span class="clock__slider__scale__mark"></span>
+                    <span class="clock__slider__scale__mark-short"></span>
+                    <span class="clock__slider__scale__mark-short"></span>
+                    <span class="clock__slider__scale__mark-short"></span>
+                    <span class="clock__slider__scale__mark-short"></span>
+                    <span class="clock__slider__scale__mark"></span>
+                    <span class="clock__slider__scale__mark-short"></span>
+                    <span class="clock__slider__scale__mark-short"></span>
+                    <span class="clock__slider__scale__mark-short"></span>
+                    <span class="clock__slider__scale__mark-short"></span>
+                    <span class="clock__slider__scale__mark"></span>
+                    <span class="clock__slider__scale__mark-short"></span>
+                    <span class="clock__slider__scale__mark-short"></span>
+                    <span class="clock__slider__scale__mark-short"></span>
+                    <span class="clock__slider__scale__mark-short"></span>
+                    <span class="clock__slider__scale__mark"></span>
+                    <span class="clock__slider__scale__mark-short"></span>
+                    <span class="clock__slider__scale__mark-short"></span>
+                    <span class="clock__slider__scale__mark-short"></span>
+                    <span class="clock__slider__scale__mark-short"></span>
+                    <span class="clock__slider__scale__mark"></span>
+                    <span class="clock__slider__scale__mark-short"></span>
+                    <span class="clock__slider__scale__mark-short"></span>
+                    <span class="clock__slider__scale__mark-short"></span>
+                    <span class="clock__slider__scale__mark-short"></span>
+                    <span class="clock__slider__scale__mark"></span>
+                    <span class="clock__slider__scale__mark-short"></span>
+                    <span class="clock__slider__scale__mark-short"></span>
+                    <span class="clock__slider__scale__mark-short"></span>
+                    <span class="clock__slider__scale__mark-short"></span>
+                    <span class="clock__slider__scale__mark"></span>
+                    <span class="clock__slider__scale__mark-short"></span>
+                    <span class="clock__slider__scale__mark-short"></span>
+                    <span class="clock__slider__scale__mark-short"></span>
+                    <span class="clock__slider__scale__mark-short"></span>
+                    <span class="clock__slider__scale__mark"></span>
+                    <span class="clock__slider__scale__mark-short"></span>
+                    <span class="clock__slider__scale__mark-short"></span>
+                    <span class="clock__slider__scale__mark-short"></span>
+                    <span class="clock__slider__scale__mark-short"></span>
+                    <span class="clock__slider__scale__mark"></span>
+                    <span class="clock__slider__scale__mark-short"></span>
+                    <span class="clock__slider__scale__mark-short"></span>
+                    <span class="clock__slider__scale__mark-short"></span>
+                    <span class="clock__slider__scale__mark-short"></span>
+                    <span class="clock__slider__scale__mark"></span>
+                    <span class="clock__slider__scale__mark-short"></span>
+                    <span class="clock__slider__scale__mark-short"></span>
+                    <span class="clock__slider__scale__mark-short"></span>
+                    <span class="clock__slider__scale__mark-short"></span>
+                    <span class="clock__slider__scale__mark"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/clock.js"></script>
+</body>
+</html>

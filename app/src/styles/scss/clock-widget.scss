@@ -1,0 +1,403 @@
+@use 'clock-widget-constants.scss';
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&text=MINHRSPWR');
+
+@font-face {
+    font-family: 'DS Digital';
+    src: url(../fonts/DS-DIGIB.TTF) format('truetype');
+}
+
+@mixin button-hightlight {
+    height: .5px;
+    background-image: linear-gradient(90deg, #4f4f4f 1%, #ffffff 51%, #4f4f4f 100%);
+}
+
+@mixin button-pressed {
+    background: #363637;
+    box-shadow: inset 0 3px 4px rgba(0, 0, 0, .3);
+}
+
+@mixin button-dark-gradient {
+    border-radius: $edge-radius;
+    box-shadow: 0 1.5px 0 $color-dark-drop-shadow;
+    background-image: 
+        linear-gradient(0deg, $color-dark-grad-1 0%, $color-dark-grad-2 100%);
+}
+
+@mixin led-glow {
+    background: rgba(146,207,220, .3);
+    box-shadow: 0 0 18px rgba(146,207,220, .9);
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+}
+
+.clock {
+    margin: auto;
+    width: 308px;
+    height: 148px;
+    padding: 23px 23px 24px 24px;
+    background: 
+        url('../images/grain.png'),
+        $color-device;
+    background-size: 300px 160px;
+    border: 1px solid $color-device-stroke;
+    border-radius: $edge-radius;
+    box-shadow: 0 0 10px $color-device-drop;
+    position: relative;
+    font-family: 'DS Digital', sans-serif;
+    color: $color-screen-font;
+    user-select: none;
+
+    .--on {
+        opacity: 1;
+    }
+
+    .--pressed {
+        @include button-pressed;
+    }
+
+    &::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 1.5px;
+        display: inline-block;
+        width: 303px;
+        height: 1px;
+        background-image: linear-gradient(to right, $color-device-glow-grad-3, $color-device-glow-grad-3 50%, $color-device-glow-grad-1 81%, $color-device-glow-grad-2 100%);
+    }
+
+    &__screen {
+        display: flex;
+        align-items: center;
+        border-radius: $edge-radius;
+        position: relative;
+        width: 191px;
+        height: 64px;
+        border: 3px solid #212122;
+        margin-right: 12px;
+        background-color: $color-screen;
+        background-clip: padding-box;
+        font-size: 26px;
+        box-shadow: 
+            0px 1px 0px $color-screen-drop,
+            inset 0 25px 65px $color-screen-inner;
+
+        &__left {
+            margin-left: 15px;
+            opacity: 0;
+            transition: opacity .342s ease-out;
+
+            &::before {
+                content: "";
+                width: 23px;
+                height: 23px;
+                display: block;
+                z-index: 1;
+                position: absolute;
+                border-radius: 50%;
+                @include led-glow;
+            }
+            
+            img {
+                border-radius: 50%;
+                position: relative;
+            }
+        }
+
+        &__display {
+            letter-spacing: -2px;
+            margin-right: 5px;
+            font-size: 35px;
+
+            &__front {
+                opacity: 0;
+                transition: opacity .242s ease-in;
+
+                span {
+                    color: #c3fefe;
+                    position: relative;
+                    
+                    &::before {
+                        content: "";
+                        position: absolute;
+                        top: 5px;
+                        left: 0;
+                        width: 23px;
+                        height: 23px;
+                        display: block;
+                        z-index: 1;
+                        border-radius: 50%;
+                        @include led-glow;
+                    }
+                }
+            }
+
+            > div {
+                line-height: 0px;
+                float: right;
+            }
+        }
+
+        &__unit {
+            font-size: 20px;
+            margin-top: 9px;
+            color: #c3fefe;
+            margin-right: 10px;
+            position: relative;
+            line-height: 0;
+            white-space: nowrap;
+            opacity: 0;
+            transition: opacity .342s ease-out;
+
+            & > div {
+                display: none;
+            }
+
+            &__hrs {
+                letter-spacing: -.9px;
+            }
+
+            .--active {
+                display: block;
+            }
+            
+            span {
+                display: inline-block;
+                color: #c3fefe;
+                position: relative;
+                
+                &::before {
+                    content: "";
+                    display: block;
+                    position: absolute;
+                    top: -10px;
+                    left: 0;
+                    width: 10px;
+                    height: 10px;
+                    z-index: 1;
+                    border-radius: 50%;
+                    background: rgba(146,207,220, .1);
+                    box-shadow: 0 0 18px rgba(146,207,220, .9);
+                }
+            }
+        }
+        
+        &::before {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 1px;
+            bottom: -3px;
+            border-radius: inherit;
+            background: $color-screen-stroke-grad-2;
+            box-shadow: 0 -1px 1px 1px $color-screen-stroke-grad-2;
+        }
+    }
+    
+    &__buttons {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 65px;
+        margin-bottom: 13px;
+        
+        &__row {
+            border-radius: $edge-radius;
+            padding: 3px;
+            height: 29px;
+            background-color: #2a2a2b;
+            box-shadow: 
+                0 .5px 0 $color-button-drop,
+                inset 0 2px 3px $color-button-inner;
+
+            &__btn {
+                display: inline-flex;
+                justify-content: center;
+                width: 22.5px;
+                height: 23px;
+                position: relative;
+                padding: 5px;
+                @include button-dark-gradient;
+
+                &.--pressed {
+                    @include button-pressed;
+                }
+
+                &::after {
+                    content: "";
+                    display: block;
+                    width: 20px;
+                    top: 0;
+                    left: 1px;
+                    position: absolute;
+                    @include button-hightlight;
+                }
+            }
+        }
+
+        &__power-btn {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            display: flex;
+            height: 23px;
+            transition: box-shadow .05s linear;
+            font-size: 9px;
+            color: $color-white;
+            font-family: 'Open Sans', sans-serif;
+            @include button-dark-gradient;
+
+            &::after {
+                content: "";
+                display: block;
+                top: 0;
+                width: 45px;
+                left: 1px;
+                position: absolute;
+                @include button-hightlight;
+            }
+            
+            &__led {
+                position: relative;
+                border-radius: 50%;
+                width: 8px;
+                height: 8px;
+                margin-right: 5px;
+                background: $color-led-bkg;
+                box-shadow: 
+                    0 .5px 0 $color-button-drop,
+                    inset 0 2px 3px $color-led-inner;
+
+                &.--on::after {
+                    box-shadow: 0 0 6px $color-led-grad-1;
+                }
+
+                &::after {
+                    content: "";
+                    position: absolute;
+                    top: .8px;
+                    left: .45px;
+                    display: inline-block;
+                    width: 7px;
+                    height: 7px;
+                    border-radius: 50%;
+                    background: linear-gradient(to top, $color-led-grad-1 39%, $color-led-grad-2 81%);
+                }
+            }
+        }
+    }
+
+    &__interface {
+        height: 21px;
+        margin-right: 18px;
+
+        &__col {
+            display: flex;
+            align-items: center;
+        }
+
+        &__text {
+            font-size: 7px;
+            color: $color-toggle-text;
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        &__switch {
+            height: 0;
+            width: 0;
+            visibility: hidden;
+            margin-left: 5px;
+            &:checked + label:after {
+                left: calc(100% - 2.5px);
+                transform: translateX(-100%);
+            }
+        }
+
+        label {
+            cursor: pointer;
+            text-indent: -9999px;
+            width: 30px;
+            height: 17px;
+            background: $color-toggle;
+            box-shadow: 
+                0 .5px 0 $color-toggle-drop,            
+                inset 0 0 3px 1px $color-toggle-inner;
+            display: block;
+            border-radius: 100px;
+            position: relative;
+            margin-right: 5px;
+
+            &:after {
+                content: '';
+                position: absolute;
+                top: 2.2px;
+                left: 2.5px;
+                width: 13px;
+                height: 13px;
+                background: linear-gradient(45deg, #fff, #ccc 60%, #fff);
+                background-position: 7px 7px;
+                box-shadow: 0 0.5px #333;
+                border-radius: 13px;
+            }
+        }
+
+    }
+
+    &__slider {
+        display: flex;
+        flex-direction: column;
+
+        &__range {
+            -webkit-appearance: none;
+            margin: 0;
+            position: relative;
+            height: 6px;
+            width: 168px;
+            cursor: pointer;
+            box-shadow: 
+                0 .5px 0 $color-range-drop,            
+                inset 0 3px 2px $color-range-inner;
+            background: $color-range;
+            border-radius: 8px;
+            outline: none;
+            -webkit-appearance: none;
+
+            &::-webkit-slider-thumb {
+                -webkit-appearance: none;
+                top: 2.2px;
+                left: 2.5px;
+                width: 13px;
+                height: 13px;
+                background: linear-gradient(45deg, #fff, #ccc 60%, #fff);
+                background-position: 7px 7px;
+                box-shadow: 0 0.5px #333;
+                border-radius: 13px;
+            }
+        }
+
+        &__scale {
+            margin-top: 5px;
+            display: flex;
+            justify-content: space-evenly;
+            height: 6px;
+            &__mark {
+                background-color: #696969;
+                display: inline-block;
+                width: 1px;
+                height: 6px;
+                
+                &-short {
+                    background-color: #696969;
+                    display: inline-block;
+                    width: 1px;
+                    height: 3px;
+                }
+            }
+        }
+    }
+}
